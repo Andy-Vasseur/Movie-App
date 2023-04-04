@@ -1,0 +1,32 @@
+.Movies {
+
+    & h1 {
+        margin: 2rem 0;
+        font-size: 6rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    & .Movies-trending {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 0 0 4rem 0;
+        grid-template-columns: repeat(5, 0fr);
+        grid-gap: 4rem;
+        column-gap: 4rem;
+
+        & .Movie-card {
+            transition: $transition-200;
+
+            &:hover {
+                transform: rotateX(10deg) rotateY(30deg);
+            }
+
+            & img {
+                border-radius: 20px;
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+// Colors
+$black-color: #000;
+$white-color: #fff;
+$gray-color: #b4b4b4;
+$dark-gray-color: #333;
+$light-gray-color: #eee;
+$dark-blue-color: #0121ff;
+$light-blue-color: #00aaff;
+$dark-green-color: #00ff00;
+$light-green-color: #00ffaa;
+$dark-red-color: #ff0000;
+$light-red-color: #ffaaaa;
+$dark-orange-color: #ffaa00;
+
+// Transitions
+$transition-100: all 100ms ease;
+$transition-200: all 200ms ease;
+$transition-300: all 300ms ease;
+$transition-400: all 400ms ease;
+$transition-500: all 500ms ease;
+$transition-600: all 600ms ease;
+
+// Animations 
+@keyframes logoSpin {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.4) rotate(180deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}

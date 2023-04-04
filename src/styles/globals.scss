@@ -1,0 +1,23 @@
+// Imports
+@import 'vars';
+@import './components/navigation.scss';
+@import './components/wrapper.scss';
+@import './pages/movies.scss';
+
+// Generals
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $white-color;
+  background-color: $black-color;
+}
