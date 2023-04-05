@@ -20,6 +20,7 @@ $transition-400: all 400ms ease;
 $transition-500: all 500ms ease;
 $transition-600: all 600ms ease;
 
+
 // Animations 
 @keyframes logoSpin {
     0% {
@@ -34,3 +35,10 @@ $transition-600: all 600ms ease;
         transform: scale(1) rotate(360deg);
     }
 }
+
+// Translates
+@import './tools/translateY.scss';
+@import './tools/translateX.scss';
+
+// Scales
+@import './tools/scales.scss';
