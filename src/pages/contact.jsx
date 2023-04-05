@@ -40,7 +40,7 @@ export default function Contact() {
                         {messageSended === true ? messageSuccess() : messageSended === false ? messageError() : null}
                     </p>
 
-                    <label htmlFor="name">Nom complet</label>
+                    <label htmlFor="name">Full name</label>
                     <input type="text" name="from_name" placeholder='Your full name...' required />
 
                     <label htmlFor="mail">E-mail</label>
@@ -49,7 +49,7 @@ export default function Contact() {
                     <label htmlFor="message">Message</label>
                     <textarea name="message" placeholder='Your message...' required />
 
-                    <input type="submit" value="Envoyer" />
+                    <input type="submit" value="Send" />
                 </form>
             </div>
         </div>
