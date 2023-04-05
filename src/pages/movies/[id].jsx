@@ -24,16 +24,33 @@ const Movie = () => {
     return (
         <div className='Movie'>
             <Navigation />
-            <h1>{movie.title}</h1>
-            <p>{movie.overview}</p>
 
-            <div className="Movie-poster">
-                <Image
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                    width={300}
-                    height={450}
-                />
+            <div className='Movie-content'>
+                <div className="Movie-poster">
+                    <Image
+                        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                        alt={movie.title}
+                        width={400}
+                        height={600}
+                    />
+                </div>
+
+                <div className='Movie-info'>
+                    <h1>{movie.title}</h1>
+                    <div className="Movie-subinfo">
+                        <span>Release date: {movie.release_date}</span>
+                        <div>
+                            {movie.genres && movie.genres.map((genre, index) => {
+                                return (
+                                    <li key={index}>
+                                        {genre.name}
+                                    </li>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <p>{movie.overview}</p>
+                </div>
             </div>
         </div>
     );

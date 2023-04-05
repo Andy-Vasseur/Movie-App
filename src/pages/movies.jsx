@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 import ScrollToTop from 'react-scroll-to-top';
 
 const Movies = () => {
-    // Calls API
+    // Calls API to get movies
     const [movies, setMovies] = useState([]);
     useEffect(() => {
         axios
@@ -23,27 +23,29 @@ const Movies = () => {
             });
     }, []);
 
+    // Calls API to get genres
+    const [genres, setGenres] = useState([]);
+    useEffect(() => {
+        axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=1455fc9a99d80cb88d2712a9f4ff900f&language=en-US')
+            .then((res) => {
+                setGenres(res.data.genres);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
     // React Select
     const [selectedOption, setSelectedOption] = useState(null);
-    const options = [
-        { value: 'Choose a filter...', label: 'Choose a filter...', isDisabled: true },
-        { value: 'all', label: 'All movies & series' },
-        { value: 'trending', label: 'Trending' },
-        { value: 'top_rated', label: 'Top Rated' },
-    ];
+    const options = genres.map((genre) => ({
+        value: genre.id,
+        label: genre.name,
+    }));
 
-    // Filter movies by selected option
-    const filteredMovies = selectedOption
-        ? movies.filter((movie) => {
-            if (selectedOption.value === 'trending') {
-                return movie.popularity > 0;
-            } else if (selectedOption.value === 'top_rated') {
-                return movie.vote_average >= 8;
-            } else {
-                return true;
-            }
-        })
-        : movies;
+    const filteredMovies = movies.filter((movie) => {
+        if (selectedOption === null) return true;
+        return movie.genre_ids.includes(selectedOption.value);
+    });
 
     return (
         <div className='Movies'>
@@ -54,11 +56,21 @@ const Movies = () => {
                 styles={{
                     control: (provided) => ({
                         ...provided,
-                        width: '300px',
                         margin: '0 auto',
                         marginBottom: '3rem',
+                        width: '300px',
                         border: 'none',
                         borderRadius: '8px',
+                    }),
+                    option: (provided) => ({
+                        ...provided,
+                        margin: '0 auto',
+                        width: '300px',
+                        color: 'black',
+                        backgroundColor: 'white',
+                        '&:hover': {
+                            backgroundColor: '#f5f5f5',
+                        },
                     }),
                 }}
                 placeholder='Choose a filter...'
